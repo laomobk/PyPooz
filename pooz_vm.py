@@ -172,10 +172,12 @@ class PoozInterpreter:
 
     def const_str(self, args):
         str_temp = to_string(*args)
-        self.consts.append(str_temp)
+        self.consts.append(pobj.PoozStringObject(str_temp))
 
     def const_int(self, args):
-        self.consts.append(self.to_number(args, 'int'))
+        int_temp = self.to_number(args, 'int')
+        obj = pobj.PoozIntObject(int_temp)
+
 
     def const_float(self, args):
         self.consts.append(self.to_number(args, 'float'))
